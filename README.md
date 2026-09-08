@@ -1,58 +1,73 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Portfolio
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi web sederhana berbasis Laravel yang digunakan untuk menampilkan portofolio dan informasi profil.
 
-## About Laravel
+## Fitur
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+* Menampilkan halaman Home
+* Menampilkan informasi profil melalui halaman About
+* Menampilkan navigasi antarbagian halaman
+* Menggunakan Laravel sebagai framework aplikasi web
+* Menggunakan Vue.js untuk bagian frontend
+* Menggunakan Vite untuk proses build frontend
+* Continuous Integration menggunakan GitHub Actions
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Struktur Branch
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Repository ini menggunakan tiga jenis branch utama dalam proses pengembangan:
 
-## Learning Laravel
+* `main` — branch utama yang digunakan untuk versi final aplikasi
+* `dev` — branch pengembangan dan integrasi fitur
+* `feature/*` — branch yang digunakan untuk mengembangkan fitur tertentu
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Alur pengembangan:
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
-
-```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+```text
+feature/* → dev
+dev → main
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Setiap perubahan dilakukan melalui Pull Request dan tidak dilakukan push langsung ke branch `main`.
 
-## Contributing
+## Testing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Project ini menggunakan PHPUnit melalui Laravel untuk melakukan pengujian aplikasi.
 
-## Code of Conduct
+Untuk menjalankan test:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+php artisan test
+```
 
-## Security Vulnerabilities
+Testing juga dijalankan secara otomatis melalui GitHub Actions setiap kali terjadi push atau Pull Request pada branch yang telah ditentukan.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## CI/CD
 
-## License
+Project ini menggunakan GitHub Actions dengan workflow `CI`.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Workflow memiliki dua job:
+
+* **Laravel Test** — melakukan instalasi dependency, build frontend, menyiapkan environment Laravel, kemudian menjalankan `php artisan test`.
+* **Frontend Build** — melakukan instalasi dependency frontend dan menjalankan `npm run build` untuk memastikan proses build frontend berhasil.
+
+Hasil workflow dapat dilihat pada bagian **Actions** di repository GitHub.
+
+## Pull Request
+
+Proses pengembangan menggunakan Pull Request untuk menjaga perubahan tetap terkontrol.
+
+Pull Request yang digunakan:
+
+1. `feature/about → dev` — penambahan halaman About.
+2. `feature/ci → dev` — penambahan GitHub Actions CI.
+3. `dev → main` — integrasi seluruh perubahan ke branch utama.
+
+## Branch Protection
+
+Branch `main` dan `dev` diberikan branch protection untuk mencegah perubahan langsung dan memastikan perubahan melalui proses Pull Request.
+
+## Repository
+
+Repository project:
+
+https://github.com/KEPL2026/evolusi-pl-24-543905-SV-25288
